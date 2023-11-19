@@ -8,8 +8,28 @@ Este repositorio contiene una demo de una aplicación móvil de Moda Circular co
 
 - Iniciar sesión y registrar usuario.
 - Pantalla de inicio con cuatro prendas de muestra.
-- Pantalla de detalles de la prenda con descripción, precio, talle y color de la prenda.
+- Pantalla de publición del anuncio de la prenda con descripción, precio, talle y color de la prenda.
 - Función de prueba de prenda con RA.
+
+## Capturas de pantalla
+
+A continuación, se muestran algunas capturas de pantalla de la aplicación:
+
+### Pantalla de inicio de sesión
+
+[Pantalla de inicio de sesión](./Login.jpg)
+
+### Pantalla de registro
+
+[Pantalla de registro](/Register.jpg)
+
+### Pantalla de inicio
+
+[Pantalla de inicio](Inicio.jpg)
+
+### Pantalla publición del anuncio
+
+[Pantalla de publicación del anuncio](Anuncio.jpg)
 
 ## Demostración e Instalación
 
