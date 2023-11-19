@@ -15,7 +15,7 @@ Este repositorio contiene una demo de una aplicación móvil de Moda Circular co
 
 A continuación, se muestran algunas capturas de pantalla de la aplicación:
 
-| <img src="./Login.jpg" width="200"> | <img src="/Register.jpg" width="200"> | <img src="./Inicio.jpg" width="200"> | <img src="./Anuncio.jpg" width="200"> |
+<img src="./Login.jpg" width="200"><img src="/Register.jpg" width="200"><img src="./Inicio.jpg" width="200"><img src="./Anuncio.jpg" width="200">
 
 ## Demostración e Instalación
 
