@@ -17,19 +17,19 @@ A continuación, se muestran algunas capturas de pantalla de la aplicación:
 
 ### Pantalla de inicio de sesión
 
-[Pantalla de inicio de sesión](./Login.jpg)
+![Pantalla de inicio de sesión](./Login.jpg)
 
 ### Pantalla de registro
 
-[Pantalla de registro](/Register.jpg)
+![Pantalla de registro](/Register.jpg)
 
 ### Pantalla de inicio
 
-[Pantalla de inicio](Inicio.jpg)
+![Pantalla de inicio](Inicio.jpg)
 
 ### Pantalla publición del anuncio
 
-[Pantalla de publicación del anuncio](Anuncio.jpg)
+![Pantalla de publicación del anuncio](Anuncio.jpg)
 
 ## Demostración e Instalación
 
