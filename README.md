@@ -17,6 +17,8 @@ A continuación, se muestran algunas capturas de pantalla de la aplicación:
 
 ### Pantalla de inicio de sesión
 
+<img src="./Login.jpg" width="200">
+
 ![Pantalla de inicio de sesión](./Login.jpg)
 
 ### Pantalla de registro
