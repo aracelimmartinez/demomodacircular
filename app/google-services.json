@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "594662202217",
+    "project_id": "moda-circular-4ea4a",
+    "storage_bucket": "moda-circular-4ea4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594662202217:android:a8f91e2eb2f20b2fbebbf8",
+        "android_client_info": {
+          "package_name": "com.example.modacircularra"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAnXQsvvoOnfMKksDnTxlaMpxieF3uL7k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

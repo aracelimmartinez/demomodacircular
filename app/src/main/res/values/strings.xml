@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Moda Circular RA</string>
+    <string name="username">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="password2">Repite la contraseña</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="register">Registrar cuenta</string>
+</resources>

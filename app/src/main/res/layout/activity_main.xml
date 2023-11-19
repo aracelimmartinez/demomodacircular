@@ -1,0 +1,182 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/logo2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Bienvenido/a"
+        android:textColor="@color/dark_green"
+        app:layout_constraintBottom_toBottomOf="@+id/cart"
+        app:layout_constraintEnd_toStartOf="@+id/cart"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cart"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:padding="5dp"
+        android:src="@drawable/cart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/dark_green" />
+
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/search_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        app:layout_constraintWidth_percent="0.95" />
+
+    <ImageView
+        android:id="@+id/shirt"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:src="@drawable/shirt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remera"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/shirt"
+        app:layout_constraintTop_toBottomOf="@+id/shirt" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$3000"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/shirt"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <ImageView
+        android:id="@+id/shirt2"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:src="@drawable/shirt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toEndOf="@+id/shirt"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remera"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/shirt2"
+        app:layout_constraintTop_toBottomOf="@+id/shirt2" />
+
+    <TextView
+        android:id="@+id/subtitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$3000"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/shirt2"
+        app:layout_constraintTop_toBottomOf="@+id/title2" />
+
+    <ImageView
+        android:id="@+id/shirt3"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/shirt"
+        app:layout_constraintStart_toStartOf="@id/shirt"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
+    <TextView
+        android:id="@+id/title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remera"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/shirt3"
+        app:layout_constraintTop_toBottomOf="@+id/shirt3" />
+
+    <TextView
+        android:id="@+id/subtitle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$3000"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/shirt3"
+        app:layout_constraintTop_toBottomOf="@+id/title3" />
+
+    <ImageView
+        android:id="@+id/shirt4"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/shirt"
+        app:layout_constraintStart_toStartOf="@id/shirt2"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle2" />
+
+    <TextView
+        android:id="@+id/title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remera"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/shirt4"
+        app:layout_constraintTop_toBottomOf="@+id/shirt4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$3000"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/shirt4"
+        app:layout_constraintTop_toBottomOf="@+id/title4" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_green"
+        app:itemIconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/nav_icons" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
