@@ -12,7 +12,20 @@
           "package_name": "com.example.modacircularra"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "594662202217-ncmini21ne80pne5ms4qv59rmrmf7cv2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.modacircularra",
+            "certificate_hash": "be232955a03d9f64c7b18972d24a57354d809481"
+          }
+        },
+        {
+          "client_id": "594662202217-cqtb370mpigc72kmbe0i3tkj87u9fkb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDAnXQsvvoOnfMKksDnTxlaMpxieF3uL7k"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594662202217-cqtb370mpigc72kmbe0i3tkj87u9fkb0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

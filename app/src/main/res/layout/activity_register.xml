@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".LoginActivity">
+    tools:context=".activities.LoginActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -30,7 +30,6 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/text_input"
             android:hint="@string/name"
-            android:inputType="textEmailAddress"
             android:paddingHorizontal="20dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
@@ -42,7 +41,6 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/text_input"
             android:hint="@string/lastname"
-            android:inputType="textEmailAddress"
             android:paddingHorizontal="20dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />

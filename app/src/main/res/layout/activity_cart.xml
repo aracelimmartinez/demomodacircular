@@ -21,70 +21,64 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Carrito de Compras"
+        android:layout_marginRight="64dp"
+        android:text="Carrito"
         android:textColor="@color/dark_green"
-        app:layout_constraintBottom_toBottomOf="@+id/cart"
-        app:layout_constraintEnd_toStartOf="@+id/cart"
+        app:layout_constraintBottom_toBottomOf="@id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/cart"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:padding="5dp"
-        android:src="@drawable/cart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/dark_green" />
-
-    <ListView
-        android:id="@+id/cart_list"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_list_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="15dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item" />
+        tools:listitem="@layout/layout_cart" />
 
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Total: $1000"
+        android:layout_marginBottom="15dp"
+        android:text="Total: $XXXX"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/shop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cart_list" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/compra"
+        android:id="@+id/shop"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@drawable/button"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/dark_button"
         android:text="Iniciar Compra"
+        android:textColor="@drawable/text_color"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@id/add_more"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/price"
         app:layout_constraintWidth_percent="0.90" />
 
     <TextView
         android:id="@+id/add_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Ver más productos"
+        android:layout_marginBottom="15dp"
+        android:text="Seguir comprando"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compra" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

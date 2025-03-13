@@ -11,6 +11,7 @@
     <string name="text_psw">Te enviaremos un email para que puedas cambiar tu contraseña.</string>
     <string name="text_logo">Logo</string>
     <string name="text_name">Nombre del proyecto</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="like_button">Botón de me gusta</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="facebook_app_id">614644724724372</string>
 </resources>
