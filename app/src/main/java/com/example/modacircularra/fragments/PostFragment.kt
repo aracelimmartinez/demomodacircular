@@ -3,12 +3,15 @@ package com.example.modacircularra.fragments
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.example.modacircularra.R
 import com.example.modacircularra.activities.ChatActivity
@@ -47,9 +50,16 @@ class PostFragment : Fragment() {
         // Initializations
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
+        val loading: ProgressBar = binding!!.loading
+        val post: ConstraintLayout = binding!!.post
 
         // Get post data
-        getPostData(postId, db)
+        getPostData(postId, db) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                loading.visibility = View.GONE
+                post.visibility = View.VISIBLE
+            }, 1000)
+        }
 
         // Function "Probarme"
         binding?.buttonTryme?.setOnClickListener {
@@ -166,7 +176,7 @@ class PostFragment : Fragment() {
         }
     }
 
-    private fun getPostData(post: String, db: FirebaseFirestore) {
+    private fun getPostData(post: String, db: FirebaseFirestore, onComplete: () -> Unit) {
         db.collection("Publicacion").document(post).get().addOnSuccessListener { document ->
             val userId = document.getString("usuario")
             val clothesId = document.getString("prenda")
@@ -261,6 +271,7 @@ class PostFragment : Fragment() {
                         }
                     }
             }
+            onComplete()
         }
     }
 

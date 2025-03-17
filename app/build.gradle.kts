@@ -70,7 +70,8 @@ android {
         implementation("androidx.activity:activity-ktx:1.9.3")
         implementation("com.github.bumptech.glide:glide:4.16.0")
         implementation("androidx.credentials:credentials:1.3.0")
-        implementation ("com.facebook.android:facebook-login:18.0.2")
+        implementation("com.facebook.android:facebook-login:18.0.2")
+        implementation("com.airbnb.android:lottie:6.0.0")
 
         implementation("io.github.sceneview:arsceneview:0.10.0")
     }

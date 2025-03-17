@@ -1,10 +1,13 @@
 package com.example.modacircularra.fragments
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 
 import com.example.modacircularra.adapters.UserAdapter
 import com.example.modacircularra.classes.Usuario
@@ -12,6 +15,7 @@ import com.example.modacircularra.databinding.FragmentMessengerBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MessengerFragment : Fragment() {
 
@@ -39,6 +43,8 @@ class MessengerFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         binding?.userRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
         binding?.userRecyclerView?.adapter = adapter
+        val loading: ProgressBar = binding!!.loading
+        val msg: RecyclerView = binding!!.userRecyclerView
 
         // Get list of messages
         userList.clear()
@@ -58,6 +64,10 @@ class MessengerFragment : Fragment() {
                                 userList.add(user)
                             }
                             adapter.notifyDataSetChanged()
+                            Handler(Looper.getMainLooper()).postDelayed({
+                                loading.visibility = View.GONE
+                                msg.visibility = View.VISIBLE
+                            }, 1000)
                         }
                     }
                 }
@@ -76,6 +86,10 @@ class MessengerFragment : Fragment() {
                                         userList.add(user)
                                     }
                                     adapter.notifyDataSetChanged()
+                                    Handler(Looper.getMainLooper()).postDelayed({
+                                        loading.visibility = View.GONE
+                                        msg.visibility = View.VISIBLE
+                                    }, 1000)
                                 }
                         }
                     }

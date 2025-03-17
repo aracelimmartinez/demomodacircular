@@ -1,11 +1,15 @@
 package com.example.modacircularra.fragments
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.SearchView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.modacircularra.R
 import com.example.modacircularra.adapters.PostAdapter
@@ -58,14 +62,23 @@ class AllPostsFragment : Fragment(), PostAdapter.OnPostClickListener {
         binding?.postRecyclerView?.layoutManager = LinearLayoutManager(context)
         binding?.postRecyclerView?.adapter = adapter
 
+        //Initialization
+        val loading: ProgressBar = binding!!.loading
+        val posts: ConstraintLayout = binding!!.posts
+
         // Get posts from Firebase
-        getPosts(adapter)
+        getPosts(adapter) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                loading.visibility = View.GONE
+                posts.visibility = View.VISIBLE
+            }, 1000)
+        }
 
         // SearchButton function
         searchButton(postList, adapter)
     }
 
-    private fun getPosts(adapter: PostAdapter) {
+    private fun getPosts(adapter: PostAdapter, onComplete: () -> Unit) {
         postList.clear()
 
         if (collection == "Favoritos") {
@@ -124,6 +137,7 @@ class AllPostsFragment : Fragment(), PostAdapter.OnPostClickListener {
                     }
                 }
             }
+            onComplete()
         }
     }
 

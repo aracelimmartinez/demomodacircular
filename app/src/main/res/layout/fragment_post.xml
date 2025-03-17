@@ -7,330 +7,349 @@
     android:layout_marginBottom="5dp"
     tools:context=".fragments.PostFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="0dp"
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@color/dark_green"
-            android:gravity="center"
-            android:text="Estado"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.95" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/profile_pic"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/circle_border"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile"
-            app:layout_constraintStart_toStartOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@id/status" />
-
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Usuario"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/profile_pic"
-            app:layout_constraintStart_toEndOf="@id/profile_pic"
-            app:layout_constraintTop_toBottomOf="@id/status" />
-
-        <ImageView
-            android:id="@+id/msg"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/message"
-            app:layout_constraintEnd_toStartOf="@id/report"
-            app:layout_constraintTop_toBottomOf="@id/status"
-            app:tint="@color/dark_green" />
-
-        <ImageButton
-            android:id="@+id/report"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="5dp"
-            android:background="@android:color/transparent"
-            android:padding="1dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/report"
-            app:layout_constraintEnd_toEndOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@+id/status"
-            app:tint="@color/dark_green" />
-
-        <ImageView
-            android:id="@+id/clothes_pic"
-            android:layout_width="280dp"
-            android:layout_height="280dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/not_pic"
-            app:layout_constraintEnd_toEndOf="@+id/status"
-            app:layout_constraintStart_toStartOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/dark_green"
-            android:gravity="center"
-            android:text="Descripción"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@id/clothes_pic"
-            app:layout_constraintWidth_percent="0.95" />
-
-        <TextView
-            android:id="@id/text"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="Texto ejemplo"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintStart_toStartOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@id/description" />
+            android:visibility="invisible">
 
-        <TextView
-            android:id="@+id/details"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@color/dark_green"
-            android:gravity="center"
-            android:text="Detalles"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@id/text"
-            app:layout_constraintWidth_percent="0.95" />
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/dark_green"
+                android:gravity="center"
+                android:text="Estado"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.95" />
 
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Precio:"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@id/details" />
+            <ImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/circle_border"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile"
+                app:layout_constraintStart_toStartOf="@+id/status"
+                app:layout_constraintTop_toBottomOf="@id/status" />
 
-        <TextView
-            android:id="@+id/size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Talle:"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@id/price_edit" />
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Usuario"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/profile_pic"
+                app:layout_constraintStart_toEndOf="@id/profile_pic"
+                app:layout_constraintTop_toBottomOf="@id/status" />
 
-        <TextView
-            android:id="@+id/colors"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Colores:"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@id/size_edit" />
+            <ImageView
+                android:id="@+id/msg"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/message"
+                app:layout_constraintEnd_toStartOf="@id/report"
+                app:layout_constraintTop_toBottomOf="@id/status"
+                app:tint="@color/dark_green" />
 
-        <TextView
-            android:id="@+id/material"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Material:"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/price_edit"
-            app:layout_constraintTop_toBottomOf="@id/details" />
+            <ImageButton
+                android:id="@+id/report"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:padding="1dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/report"
+                app:layout_constraintEnd_toEndOf="@+id/status"
+                app:layout_constraintTop_toBottomOf="@+id/status"
+                app:tint="@color/dark_green" />
 
-        <TextView
-            android:id="@+id/model"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Modelo:"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/price_edit"
-            app:layout_constraintTop_toBottomOf="@id/material_edit" />
+            <ImageView
+                android:id="@+id/clothes_pic"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/not_pic"
+                app:layout_constraintEnd_toEndOf="@+id/status"
+                app:layout_constraintStart_toStartOf="@+id/status"
+                app:layout_constraintTop_toBottomOf="@+id/username" />
 
-        <TextView
-            android:id="@+id/clothes_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Estado:"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/price_edit"
-            app:layout_constraintTop_toBottomOf="@id/model_edit" />
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/dark_green"
+                android:gravity="center"
+                android:text="Descripción"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/status"
+                app:layout_constraintTop_toBottomOf="@id/clothes_pic"
+                app:layout_constraintWidth_percent="0.95" />
 
-        <TextView
-            android:id="@+id/price_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="$0000"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintStart_toEndOf="@id/price"
-            app:layout_constraintTop_toBottomOf="@id/details"
-            app:layout_constraintWidth_percent="0.35" />
+            <TextView
+                android:id="@id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Texto ejemplo"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="@+id/status"
+                app:layout_constraintTop_toBottomOf="@id/description" />
 
-        <TextView
-            android:id="@+id/size_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="S - M - L"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintStart_toEndOf="@id/size"
-            app:layout_constraintTop_toBottomOf="@id/price_edit"
-            app:layout_constraintWidth_percent="0.38" />
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/dark_green"
+                android:gravity="center"
+                android:text="Detalles"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/status"
+                app:layout_constraintTop_toBottomOf="@id/text"
+                app:layout_constraintWidth_percent="0.95" />
 
-        <TextView
-            android:id="@+id/colors_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="White - Black"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintStart_toEndOf="@id/colors"
-            app:layout_constraintTop_toBottomOf="@id/size_edit"
-            app:layout_constraintWidth_percent="0.32" />
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Precio:"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/status"
+                app:layout_constraintTop_toBottomOf="@id/details" />
 
-        <TextView
-            android:id="@+id/material_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="White - Black"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintStart_toEndOf="@id/material"
-            app:layout_constraintTop_toBottomOf="@id/details"
-            app:layout_constraintWidth_percent="0.25" />
+            <TextView
+                android:id="@+id/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Talle:"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/status"
+                app:layout_constraintTop_toBottomOf="@id/price_edit" />
 
-        <TextView
-            android:id="@+id/model_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Skinny Jeans"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintStart_toEndOf="@id/model"
-            app:layout_constraintTop_toBottomOf="@id/material_edit"
-            app:layout_constraintWidth_percent="0.26" />
+            <TextView
+                android:id="@+id/colors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Colores:"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/status"
+                app:layout_constraintTop_toBottomOf="@id/size_edit" />
 
-        <TextView
-            android:id="@+id/clothes_status_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Usado"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintStart_toEndOf="@id/clothes_status"
-            app:layout_constraintTop_toBottomOf="@id/model_edit"
-            app:layout_constraintWidth_percent="0.28" />
+            <TextView
+                android:id="@+id/material"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Material:"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/price_edit"
+                app:layout_constraintTop_toBottomOf="@id/details" />
 
-        <Button
-            android:id="@+id/button_add_cart"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/post_buttons"
-            android:padding="10dp"
-            android:text="Agregar al carrito"
-            android:textAllCaps="false"
-            android:textColor="@drawable/text_color_post"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@id/clothes_status_edit"
-            app:layout_constraintWidth_percent="0.38" />
+            <TextView
+                android:id="@+id/model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Modelo:"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/price_edit"
+                app:layout_constraintTop_toBottomOf="@id/material_edit" />
 
-        <Button
-            android:id="@+id/button_tryme"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/post_buttons"
-            android:padding="10dp"
-            android:text="Probarme"
-            android:textAllCaps="false"
-            android:textColor="@drawable/text_color_post"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/button_add_cart"
-            app:layout_constraintTop_toBottomOf="@id/clothes_status_edit"
-            app:layout_constraintWidth_percent="0.38" />
+            <TextView
+                android:id="@+id/clothes_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Estado:"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/price_edit"
+                app:layout_constraintTop_toBottomOf="@id/model_edit" />
 
-        <ImageButton
-            android:id="@+id/fav"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@android:color/transparent"
-            android:padding="1dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/heart"
-            app:layout_constraintStart_toEndOf="@id/button_tryme"
-            app:layout_constraintTop_toBottomOf="@id/clothes_status_edit" />
-        <!--app:tint="@color/dark_green"-->
+            <TextView
+                android:id="@+id/price_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="$0000"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@id/price"
+                app:layout_constraintTop_toBottomOf="@id/details"
+                app:layout_constraintWidth_percent="0.35" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/size_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="S - M - L"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@id/size"
+                app:layout_constraintTop_toBottomOf="@id/price_edit"
+                app:layout_constraintWidth_percent="0.38" />
+
+            <TextView
+                android:id="@+id/colors_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="White - Black"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@id/colors"
+                app:layout_constraintTop_toBottomOf="@id/size_edit"
+                app:layout_constraintWidth_percent="0.32" />
+
+            <TextView
+                android:id="@+id/material_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="White - Black"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@id/material"
+                app:layout_constraintTop_toBottomOf="@id/details"
+                app:layout_constraintWidth_percent="0.25" />
+
+            <TextView
+                android:id="@+id/model_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Skinny Jeans"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@id/model"
+                app:layout_constraintTop_toBottomOf="@id/material_edit"
+                app:layout_constraintWidth_percent="0.26" />
+
+            <TextView
+                android:id="@+id/clothes_status_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Usado"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@id/clothes_status"
+                app:layout_constraintTop_toBottomOf="@id/model_edit"
+                app:layout_constraintWidth_percent="0.28" />
+
+            <Button
+                android:id="@+id/button_add_cart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/post_buttons"
+                android:padding="10dp"
+                android:text="Agregar al carrito"
+                android:textAllCaps="false"
+                android:textColor="@drawable/text_color_post"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/status"
+                app:layout_constraintTop_toBottomOf="@id/clothes_status_edit"
+                app:layout_constraintWidth_percent="0.38" />
+
+            <Button
+                android:id="@+id/button_tryme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/post_buttons"
+                android:padding="10dp"
+                android:text="Probarme"
+                android:textAllCaps="false"
+                android:textColor="@drawable/text_color_post"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/button_add_cart"
+                app:layout_constraintTop_toBottomOf="@id/clothes_status_edit"
+                app:layout_constraintWidth_percent="0.38" />
+
+            <ImageButton
+                android:id="@+id/fav"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:padding="1dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/heart"
+                app:layout_constraintStart_toEndOf="@id/button_tryme"
+                app:layout_constraintTop_toBottomOf="@id/clothes_status_edit" />
+            <!--app:tint="@color/dark_green"-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
 
 </ScrollView>
