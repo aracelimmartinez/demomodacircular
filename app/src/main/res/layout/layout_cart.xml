@@ -17,7 +17,7 @@
         android:id="@+id/btn_trash"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/trash"
         app:layout_constraintEnd_toEndOf="parent"

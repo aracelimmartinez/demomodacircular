@@ -71,7 +71,7 @@ class AllPostsFragment : Fragment(), PostAdapter.OnPostClickListener {
             Handler(Looper.getMainLooper()).postDelayed({
                 loading.visibility = View.GONE
                 posts.visibility = View.VISIBLE
-            }, 1000)
+            }, 2000)
         }
 
         // SearchButton function

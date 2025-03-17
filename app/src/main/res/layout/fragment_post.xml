@@ -26,7 +26,7 @@
             android:id="@+id/post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible">
+            android:visibility="invisible">
 
             <TextView
                 android:id="@+id/status"
@@ -78,6 +78,20 @@
                 android:layout_marginRight="5dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/message"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@id/report"
+                app:layout_constraintTop_toBottomOf="@id/status"
+                app:tint="@color/dark_green" />
+
+            <ImageView
+                android:id="@+id/trash"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/trash"
+                android:visibility="visible"
                 app:layout_constraintEnd_toStartOf="@id/report"
                 app:layout_constraintTop_toBottomOf="@id/status"
                 app:tint="@color/dark_green" />

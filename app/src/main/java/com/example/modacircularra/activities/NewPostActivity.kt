@@ -96,10 +96,17 @@ class NewPostActivity : AppCompatActivity() {
     }
 
     private fun validateSecondForm() {
-        if (binding.titulo.text.isNotEmpty() && binding.descripcion.text.isNotEmpty() && binding.precio.text.isNotEmpty()) {
+        val precioTexto = binding.precio.text.toString()
+        val precio = precioTexto.toDoubleOrNull()
+
+        if (binding.titulo.text.isNotEmpty() && binding.descripcion.text.isNotEmpty() && precio != null) {
             addPost()
         } else {
-            showError()
+            if (precio == null) {
+                Toast.makeText(this, "El precio no es válido", Toast.LENGTH_LONG).show()
+            } else {
+                showError()
+            }
         }
     }
 
@@ -123,12 +130,7 @@ class NewPostActivity : AppCompatActivity() {
     }
 
     private fun showError() {
-        AlertDialog.Builder(this)
-            .setTitle("Error")
-            .setMessage("Debes completar todos los campos")
-            .setPositiveButton("Aceptar", null)
-            .create()
-            .show()
+        Toast.makeText(this, "Debes completar todos los campos", Toast.LENGTH_LONG).show()
     }
 
     private fun showMessage() {

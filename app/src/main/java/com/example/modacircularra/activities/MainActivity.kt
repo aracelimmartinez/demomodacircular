@@ -3,17 +3,22 @@ package com.example.modacircularra.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.example.modacircularra.R
+import com.example.modacircularra.classes.MyApplication
 import com.example.modacircularra.databinding.ActivityMainBinding
 import com.example.modacircularra.fragments.AccProfileFragment
 import com.example.modacircularra.fragments.AllPostsFragment
 import com.example.modacircularra.fragments.MessengerFragment
+import com.example.modacircularra.viewModel.CarritoViewModel
 import com.google.firebase.auth.FirebaseAuth
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    public lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var viewModel: CarritoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Initializations
@@ -21,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
+        viewModel = (applicationContext as MyApplication).carritoViewModel
 
         val currentUser = auth.currentUser
         if (currentUser != null) {
@@ -33,6 +39,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        // Update cart number
+        viewModel.carritoCount.observe(this, Observer { count ->
+            binding.carritoBadge.text =
+                count.toString()  // Suponiendo que tienes un TextView en el ícono
+            binding.carritoBadge.visibility =
+                if (count > 0) View.VISIBLE else View.GONE  // Solo muestra el contador si hay items
+        })
 
         // Bottom Bar
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -73,6 +87,7 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
+
                 else -> false
             }
         }

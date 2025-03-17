@@ -15,12 +15,14 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.example.modacircularra.R
 import com.example.modacircularra.activities.ChatActivity
+import com.example.modacircularra.activities.MainActivity
 import com.example.modacircularra.activities.RAActivity
 import com.example.modacircularra.classes.MyApplication
 import com.example.modacircularra.viewModel.CarritoViewModel
 import com.example.modacircularra.databinding.FragmentPostBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 class PostFragment : Fragment() {
 
@@ -96,6 +98,65 @@ class PostFragment : Fragment() {
                 .setNegativeButton("No", null)
                 .show()
         }
+
+        // Function delete post
+        binding?.trash?.setOnClickListener {
+            deletePost(postId)
+        }
+    }
+
+    private fun deletePost(postId: String) {
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Eliminar publicación")
+            .setMessage("¿Estás seguro de que deseas eliminar esta publicación?")
+            .setPositiveButton("Sí") { _, _ ->
+                // Initialization
+                val storage = FirebaseStorage.getInstance()
+                val db = FirebaseFirestore.getInstance()
+
+                db.collection("Publicacion").document(postId).get()
+                    .addOnSuccessListener { document ->
+                        val clothesId = document.getString("prenda")
+                        if (clothesId != null) {
+                            // Obtener la foto de la prenda
+                            db.collection("Prendas").document(clothesId).get()
+                                .addOnSuccessListener { prendaDoc ->
+                                    val fotoUrl = prendaDoc.getString("foto")
+                                    if (!fotoUrl.isNullOrEmpty()) {
+                                        val fotoRef = storage.getReferenceFromUrl(fotoUrl)
+                                        fotoRef.delete()
+                                    }
+                                    db.collection("Prendas").document(clothesId).delete()
+                                }
+                        }
+                        db.collection("Publicacion").document(postId).delete()
+                            .addOnSuccessListener {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Publicación eliminada",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                (activity as MainActivity).binding.bottomNavigation.selectedItemId =
+                                    R.id.nav_home
+                                (activity as MainActivity).supportFragmentManager.beginTransaction()
+                                    .replace(
+                                        R.id.fragment_container,
+                                        AllPostsFragment.newInstance("Publicacion")
+                                    )
+                                    .commit()
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Error al eliminar la publicación",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                    }
+            }
+            .setNegativeButton("No", null)
+            .show()
     }
 
     // Remove from favorites
@@ -177,6 +238,7 @@ class PostFragment : Fragment() {
     }
 
     private fun getPostData(post: String, db: FirebaseFirestore, onComplete: () -> Unit) {
+
         db.collection("Publicacion").document(post).get().addOnSuccessListener { document ->
             val userId = document.getString("usuario")
             val clothesId = document.getString("prenda")
@@ -184,6 +246,15 @@ class PostFragment : Fragment() {
             val postStatus = document.getString("estado")
             val price = document.getString("precio")
             val idPost = document.getString("id")
+            val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+
+            if (userId == currentUserId) {
+                binding?.trash?.visibility = View.VISIBLE
+                binding?.msg?.visibility = View.GONE
+            } else {
+                binding?.trash?.visibility = View.GONE
+                binding?.msg?.visibility = View.VISIBLE
+            }
 
             binding?.text?.text = description
             binding?.priceEdit?.text = "$$price"
@@ -227,12 +298,16 @@ class PostFragment : Fragment() {
                                     .replace(R.id.fragment_container, AccProfileFragment())
                                     .addToBackStack(null)
                                     .commit()
+                                (requireActivity() as MainActivity).binding.bottomNavigation.selectedItemId =
+                                    R.id.nav_profile
                             } else {
                                 val fragment = AccProfileFragment.newInstance(userId, completeName)
                                 parentFragmentManager.beginTransaction()
                                     .replace(R.id.fragment_container, fragment)
                                     .addToBackStack(null)
                                     .commit()
+                                (requireActivity() as MainActivity).binding.bottomNavigation.selectedItemId =
+                                    R.id.nav_profile
                             }
                         }
                     }

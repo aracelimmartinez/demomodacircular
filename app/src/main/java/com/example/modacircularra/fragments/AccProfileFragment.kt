@@ -148,7 +148,7 @@ class AccProfileFragment : Fragment(), PostAdapter.OnPostClickListener {
             Handler(Looper.getMainLooper()).postDelayed({
                 loading.visibility = View.GONE
                 profile.visibility = View.VISIBLE
-            }, 1000)
+            }, 2000)
         }
     }
 

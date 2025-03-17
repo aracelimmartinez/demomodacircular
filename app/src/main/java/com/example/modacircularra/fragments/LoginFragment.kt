@@ -104,6 +104,11 @@ class LoginFragment : Fragment() {
         // Facebook button
         binding!!.facebook.setOnClickListener {
 
+            Toast.makeText(requireContext(), "Función en construcción.", Toast.LENGTH_SHORT)
+                .show()
+
+            /*
+
             FacebookSdk.sdkInitialize(requireActivity().application)  // Usamos requireActivity().application
             AppEventsLogger.activateApp(requireActivity().application)
 
@@ -131,6 +136,8 @@ class LoginFragment : Fragment() {
                         ).show()
                     }
                 })
+
+             */
         }
     }
 
