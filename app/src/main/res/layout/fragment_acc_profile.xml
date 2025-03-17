@@ -6,106 +6,124 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AccProfileFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="10dp">
+        android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_profile_pic"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_marginTop="20dp"
-            android:background="@android:color/white"
-            app:cardCornerRadius="80dp"
-            app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/profile_pic"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/no_profile_pic" />
-
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/name"
+        <ProgressBar
+            android:id="@+id/loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_profile_pic" />
-
-        <Button
-            android:id="@+id/button_edit_profile"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/dark_button"
-            android:text="Editar Perfil"
-            android:textAllCaps="false"
-            android:textColor="@drawable/text_color_profile"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/button_logoff"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name"
-            app:layout_constraintWidth_percent="0.4" />
-
-        <Button
-            android:id="@+id/button_logoff"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/dark_button"
-            android:text="Cerrar Sesión"
-            android:textAllCaps="false"
-            android:textColor="@drawable/text_color_profile"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button_edit_profile"
-            app:layout_constraintTop_toBottomOf="@+id/name"
-            app:layout_constraintWidth_percent="0.4" />
-
-        <Button
-            android:id="@+id/send_msg"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/dark_button"
-            android:text="Enviar Mensaje"
-            android:textAllCaps="false"
-            android:textColor="@drawable/text_color_profile"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name"
-            app:layout_constraintWidth_percent="0.4" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/post_recyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_gravity="center"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/send_msg"
-            tools:listitem="@layout/layout_post" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:visibility="invisible">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_profile_pic"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/white"
+                app:cardCornerRadius="80dp"
+                app:cardElevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/profile_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/no_profile_pic" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_profile_pic" />
+
+            <Button
+                android:id="@+id/button_edit_profile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/dark_button"
+                android:text="Editar Perfil"
+                android:textAllCaps="false"
+                android:textColor="@drawable/text_color_profile"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/button_logoff"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <Button
+                android:id="@+id/button_logoff"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/dark_button"
+                android:text="Cerrar Sesión"
+                android:textAllCaps="false"
+                android:textColor="@drawable/text_color_profile"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/button_edit_profile"
+                app:layout_constraintTop_toBottomOf="@+id/name"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <Button
+                android:id="@+id/send_msg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/dark_button"
+                android:text="Enviar Mensaje"
+                android:textAllCaps="false"
+                android:textColor="@drawable/text_color_profile"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/post_recyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/send_msg"
+                tools:listitem="@layout/layout_post" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
 </FrameLayout>

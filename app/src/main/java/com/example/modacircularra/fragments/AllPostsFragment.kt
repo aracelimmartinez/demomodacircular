@@ -117,6 +117,7 @@ class AllPostsFragment : Fragment(), PostAdapter.OnPostClickListener {
                         }
                     }
             }
+            onComplete()
         } else {
             db.collection(collection).get().addOnSuccessListener { result ->
                 for (document in result) {

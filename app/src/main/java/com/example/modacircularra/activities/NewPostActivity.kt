@@ -21,23 +21,19 @@ import java.util.UUID
 
 class NewPostActivity : AppCompatActivity() {
 
-    // ViewBinding instance
     private lateinit var binding: ActivityNewPostBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private lateinit var imageUri: Uri
     private lateinit var idPrendaGlobal: String
 
-    // For picking media
     private val pickMedia =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             if (uri != null) {
-                // User selects an image
                 binding.image.setImageURI(uri)
                 imageUri = uri
             } else {
-                // User does not select an image, return to the main screen
-                Toast.makeText(this, "No se seleccionó una imágen.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "No se seleccionó una imagen.", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
             }
         }
@@ -47,33 +43,33 @@ class NewPostActivity : AppCompatActivity() {
         binding = ActivityNewPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize FirebaseAuth and Firestore
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        // Launch media picker
         pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
 
-        // Spinner definition
-        val items = arrayOf("Usado", "Poco uso", "Sin uso")
-        val adapter = ArrayAdapter(this, R.layout.spinner_item, items)
-        binding.estado.adapter = adapter
+        // Spinners initializations
+        val estadoItems = arrayOf("Usado", "Poco uso", "Sin uso")
+        val talleItems = arrayOf("XS", "S", "M", "L", "XL")
+        val colorItems =
+            arrayOf("Negro", "Blanco", "Amarillo", "Azul", "Naranja", "Rojo", "Verde", "Violeta")
+        val materialItems = arrayOf("Algodón", "Poliéster", "Lana", "Cuero", "Jean")
 
-        // Next button action
-        binding.btnNext.setOnClickListener {
-            validateFirstForm()
-        }
+        // Configurar adaptadores
+        binding.estado.adapter = ArrayAdapter(this, R.layout.spinner_item, estadoItems)
+        binding.talle.adapter = ArrayAdapter(this, R.layout.spinner_item, talleItems)
+        binding.color.adapter = ArrayAdapter(this, R.layout.spinner_item, colorItems)
+        binding.material.adapter = ArrayAdapter(this, R.layout.spinner_item, materialItems)
 
-        // Post button action
-        binding.btnPost.setOnClickListener {
-            validateSecondForm()
-        }
+        binding.btnNext.setOnClickListener { validateFirstForm() }
+        binding.btnPost.setOnClickListener { validateSecondForm() }
     }
 
-    // Validate the first form
     private fun validateFirstForm() {
-        if (binding.talle.text.isNotEmpty() && binding.colores.text.isNotEmpty() &&
-            binding.material.text.isNotEmpty() && binding.modelo.text.isNotEmpty()
+        if (binding.talle.selectedItem != null &&
+            binding.color.selectedItem != null &&
+            binding.material.selectedItem != null &&
+            binding.modelo.text.isNotEmpty()
         ) {
             addPrendaFirebase()
             switchToSecondForm()
@@ -82,12 +78,14 @@ class NewPostActivity : AppCompatActivity() {
         }
     }
 
-    // Switch to the second form
     private fun switchToSecondForm() {
         binding.text.visibility = View.GONE
+        binding.text2.visibility = View.GONE
+        binding.text3.visibility = View.GONE
+        binding.text4.visibility = View.GONE
         binding.estado.visibility = View.GONE
         binding.talle.visibility = View.GONE
-        binding.colores.visibility = View.GONE
+        binding.color.visibility = View.GONE
         binding.material.visibility = View.GONE
         binding.modelo.visibility = View.GONE
         binding.btnNext.visibility = View.GONE
@@ -97,7 +95,6 @@ class NewPostActivity : AppCompatActivity() {
         binding.btnPost.visibility = View.VISIBLE
     }
 
-    // Validate the second form
     private fun validateSecondForm() {
         if (binding.titulo.text.isNotEmpty() && binding.descripcion.text.isNotEmpty() && binding.precio.text.isNotEmpty()) {
             addPost()
@@ -106,7 +103,6 @@ class NewPostActivity : AppCompatActivity() {
         }
     }
 
-    // Function to add a new post to Firestore
     private fun addPost() {
         val idUser = auth.currentUser?.uid
         val post = Publicacion(
@@ -126,7 +122,6 @@ class NewPostActivity : AppCompatActivity() {
         }
     }
 
-    // Function to show error message
     private fun showError() {
         AlertDialog.Builder(this)
             .setTitle("Error")
@@ -136,7 +131,6 @@ class NewPostActivity : AppCompatActivity() {
             .show()
     }
 
-    // Function to show success message
     private fun showMessage() {
         AlertDialog.Builder(this)
             .setTitle("¡Genial!")
@@ -148,7 +142,6 @@ class NewPostActivity : AppCompatActivity() {
             .show()
     }
 
-    // Function to add prenda to Firestore
     private fun addPrendaFirebase() {
         val storage = FirebaseStorage.getInstance()
         val storageRef = storage.reference
@@ -159,10 +152,10 @@ class NewPostActivity : AppCompatActivity() {
             prendaRef.downloadUrl.addOnSuccessListener { uri ->
                 val prenda = Prenda(
                     null,
-                    binding.talle.text.toString(),
-                    binding.colores.text.toString(),
+                    binding.talle.selectedItem.toString(),
+                    binding.color.selectedItem.toString(),
                     binding.estado.selectedItem.toString(),
-                    binding.material.text.toString(),
+                    binding.material.selectedItem.toString(),
                     binding.modelo.text.toString(),
                     uri.toString()
                 )

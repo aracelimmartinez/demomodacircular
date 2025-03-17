@@ -2,12 +2,17 @@ package com.example.modacircularra.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.modacircularra.R
 import com.example.modacircularra.activities.ChatActivity
@@ -135,13 +140,19 @@ class AccProfileFragment : Fragment(), PostAdapter.OnPostClickListener {
         val adapter = PostAdapter(postList, this)
         binding?.postRecyclerView?.layoutManager = LinearLayoutManager(context)
         binding?.postRecyclerView?.adapter = adapter
+        val loading: ProgressBar = binding!!.loading
+        val profile: ConstraintLayout = binding!!.profile
 
         // Search user posts
-        postData(adapter, userId)
-
+        postData(adapter, userId) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                loading.visibility = View.GONE
+                profile.visibility = View.VISIBLE
+            }, 1000)
+        }
     }
 
-    private fun postData(adapter: PostAdapter, userId: String?) {
+    private fun postData(adapter: PostAdapter, userId: String?, onComplete: () -> Unit) {
         if (userId == null) return
         postList.clear()
         db.collection("Publicacion")
@@ -182,6 +193,7 @@ class AccProfileFragment : Fragment(), PostAdapter.OnPostClickListener {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        onComplete()
     }
 
     companion object {
