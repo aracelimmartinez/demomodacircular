@@ -94,14 +94,19 @@ class AccProfileFragment : Fragment(), PostAdapter.OnPostClickListener {
         if (userId == null) return
         db.collection("Usuarios").document(userId).get()
             .addOnSuccessListener { document ->
+
+                if (binding == null) return@addOnSuccessListener
+
                 val photoUrl = document.getString("foto")
                 val userName = document.getString("nombre")
                 val userLastName = document.getString("apellido")
 
-                if (!photoUrl.isNullOrEmpty()) {
-                    Glide.with(this)
-                        .load(photoUrl)
-                        .into(binding!!.profilePic)
+                binding?.profilePic?.let { imageView ->
+                    if (!photoUrl.isNullOrEmpty()) {
+                        Glide.with(this)
+                            .load(photoUrl)
+                            .into(imageView)
+                    }
                 }
 
                 val fullName = "$userName $userLastName"

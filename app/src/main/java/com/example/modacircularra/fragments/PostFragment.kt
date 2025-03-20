@@ -137,8 +137,8 @@ class PostFragment : Fragment() {
                                     "Publicación eliminada",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                                (activity as MainActivity).binding.bottomNavigation.selectedItemId =
-                                    R.id.nav_home
+                                (activity as MainActivity).binding.bottomNavigation.menu.findItem(R.id.nav_home).isChecked =
+                                    true
                                 (activity as MainActivity).supportFragmentManager.beginTransaction()
                                     .replace(
                                         R.id.fragment_container,
@@ -298,16 +298,18 @@ class PostFragment : Fragment() {
                                     .replace(R.id.fragment_container, AccProfileFragment())
                                     .addToBackStack(null)
                                     .commit()
-                                (requireActivity() as MainActivity).binding.bottomNavigation.selectedItemId =
+                                (requireActivity() as MainActivity).binding.bottomNavigation.menu.findItem(
                                     R.id.nav_profile
+                                ).isChecked = true
                             } else {
                                 val fragment = AccProfileFragment.newInstance(userId, completeName)
                                 parentFragmentManager.beginTransaction()
                                     .replace(R.id.fragment_container, fragment)
                                     .addToBackStack(null)
                                     .commit()
-                                (requireActivity() as MainActivity).binding.bottomNavigation.selectedItemId =
+                                (requireActivity() as MainActivity).binding.bottomNavigation.menu.findItem(
                                     R.id.nav_profile
+                                ).isChecked = true
                             }
                         }
                     }
